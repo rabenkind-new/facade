@@ -8,6 +8,11 @@ facade.register_facade_nodes("default", "desert_sandstone", "default:desert_sand
 facade.register_facade_nodes("default", "silver_sandstone", "default:silver_sandstone", "Silver Sandstone")
 --facade.register_facade_nodes("default", "obsidian", "default:obsidian", "Obsidian")
 
+-- added Nodes the Cornerbrick could only be made from the desert_sandstone and the desert_stone
+-- because of the brick in there name.
+facade.register_facade_nodes("default", "desert_sandstone_brick", "default:desert_sandstone_brick", "Desert Sandstone Brick")
+facade.register_facade_nodes("default", "desert_stonebrick", "default:desert_stone_brick", "Desert Stone Brick")
+
 
 if minetest.get_modpath( "bakedclay") then
    local clay = {
