@@ -12,7 +12,9 @@ local output_ratios = {
 	bannerstone_corner = 1,
 	centerstone = 1,
 	column = 1,
-	column_h = 1,
+	column_h_all = 1,
+        column_h_front = 1,
+        column_h_corner = 1,
 	column_corner = 1,
 	corbel = 1,
 	corbel_corner = 1,
@@ -63,7 +65,10 @@ local function prepare_formspec (material_name)
 	"item_image_button[0,1.5;1,1;" .. output .. "_corbel" .. ";corbel; ]"..
 	"item_image_button[1,1.5;1,1;" .. output .. "_corbel_corner_inner" .. ";corbel_corner_inner; ]"..
 	"item_image_button[2,1.5;1,1;" .. output .. "_corbel_corner" .. ";corbel_corner; ]"..
-
+        "item_image_button[3,1.5;1,1;" .. output .. "_column_h" .. ";column_h; ]"..
+        "item_image_button[4,1.5;1,1;" .. output .. "_column_h_corner" .. ";column_h_corner; ]"..
+        "item_image_button[5,1.5;1,1;" .. output .. "_column_h_front" .. ";column_h_front; ]"..
+        
 	-- row 3, cornice
 	"item_image_button[0,2.5;1,1;" .. output .. "_rgspro" .. ";rgspro; ]"..
 	"item_image_button[1,2.5;1,1;" .. output .. "_rgspro_inner_corner" .. ";rgspro_inner_corner; ]"..

@@ -213,12 +213,12 @@ function facade.register_column_h_corner(modname, subname, recipeitem, desc)
                 description = desc .. " Column Horizontal Corner",
                 drawtype = "nodebox",
                 tiles = {
-                "" .. modname.. "_" .. subname .. ".png",
-                "" .. modname.. "_" .. subname .. ".png",
-                "" .. modname.. "_" .. subname .. ".png",
-                "" .. modname.. "_" .. subname .. ".png^facade_column_h.png",
-                "" .. modname.. "_" .. subname .. ".png^facade_column_h.png",
-                "" .. modname.. "_" .. subname .. ".png"
+                "" .. modname.. "_" .. subname .. ".png", -- top
+                "" .. modname.. "_" .. subname .. ".png", -- bottom
+                "" .. modname.. "_" .. subname .. ".png^facade_column_h.png", -- right
+                "" .. modname.. "_" .. subname .. ".png", -- left
+                "" .. modname.. "_" .. subname .. ".png", -- back
+                "" .. modname.. "_" .. subname .. ".png^facade_column_h.png" -- front
                 },
                 paramtype = "light",
                 paramtype2 = "facedir",
@@ -228,11 +228,51 @@ function facade.register_column_h_corner(modname, subname, recipeitem, desc)
                 node_box = {
                         type = "fixed",
                         fixed = {
-                        {-0.4375, -0.5, -0.5, 0.5, 0.5, 0.4375}, -- NodeBox1
+                        -- -bottom -left -front +top +right +back
+                        {-0.5, -0.5, -0.4375, 0.4375, 0.5, 0.5}, -- NodeBox1
                         {-0.5, 0.3125, -0.5, 0.5, 0.5, 0.5}, -- NodeBox2
                         {-0.5, -0.4375, -0.5, 0.5, -0.25, 0.5}, -- NodeBox3
                         {-0.5, -0.1875, -0.5, 0.5, 0, 0.5}, -- NodeBox4
                         {-0.5, 0.0625, -0.5, 0.5, 0.25, 0.5}, -- NodeBox5
+                        },
+                },
+                selection_box = {
+                        type = "fixed",
+                        fixed = {
+                                {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+                        }
+                },
+        })
+
+end
+
+-- Node will be called facade:<subname>_column_h_corner
+function facade.register_column_h_front(modname, subname, recipeitem, desc)
+        minetest.register_node("facade:" .. subname .. "_column_h_front", {
+                description = desc .. " Column Horizontal Front",
+                drawtype = "nodebox",
+                tiles = {
+                "" .. modname.. "_" .. subname .. ".png",
+                "" .. modname.. "_" .. subname .. ".png",
+                "" .. modname.. "_" .. subname .. ".png",
+                "" .. modname.. "_" .. subname .. ".png",
+                "" .. modname.. "_" .. subname .. ".png",
+                "" .. modname.. "_" .. subname .. ".png^facade_column_h.png"
+                },
+                paramtype = "light",
+                paramtype2 = "facedir",
+                is_ground_content = false,
+                groups = {cracky = 3, oddly_breakable_by_hand = 2, stone = 1},
+                sounds = default.node_sound_stone_defaults(),
+                node_box = {
+                        type = "fixed",
+                        fixed = {
+                        -- -bottom -left -front +top +right +back
+                        {-0.5, -0.5, -0.4375, 0.5, 0.5, 0.5}, -- NodeBox1
+                        {-0.5, 0.3125, -0.5, 0.5, 0.5, -0.4375}, -- NodeBox2
+                        {-0.5, 0.0625, -0.5, 0.5, 0.25, -0.4375}, -- NodeBox3
+                        {-0.5, -0.1875, -0.5, 0.5, 0, -0.4375}, -- NodeBox4
+                        {-0.5, -0.4375, -0.5, 0.5, -0.25, -0.4375}, -- NodeBox5
                         },
                 },
                 selection_box = {
@@ -824,6 +864,7 @@ function facade.register_facade_nodes(modname, subname, recipeitem, desc)
 	facade.register_column_corner(modname, subname, recipeitem, desc)
 	facade.register_column_h(modname, subname, recipeitem, desc)
         facade.register_column_h_corner(modname, subname, recipeitem, desc)
+        facade.register_column_h_front(modname, subname, recipeitem, desc)
 	facade.register_corbel(modname, subname, recipeitem, desc)
 	facade.register_corbel_corner(modname, subname, recipeitem, desc)
 	facade.register_corbel_corner_inner(modname, subname, recipeitem, desc)
@@ -852,6 +893,7 @@ function facade.register_facade_nodes(modname, subname, recipeitem, desc)
 		chisel.register_node("facade",subname, recipeitem, "column_corner")
 		chisel.register_node("facade",subname, recipeitem, "column_h")
                 chisel.register_node("facade",subname, recipeitem, "column_h_corner")
+                chisel.register_node("facade",subname, recipeitem, "column_h_front")
 		chisel.register_node("facade",subname, recipeitem, "corbel")
 		chisel.register_node("facade",subname, recipeitem, "corbel_corner")
 		chisel.register_node("facade",subname, recipeitem, "corbel_corner_inner")
